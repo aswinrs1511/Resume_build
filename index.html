@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aswin R — Resume Generator</title>
+<style>
+  :root { --ink:#20252b; --muted:#5c6670; --line:#d7dce1; --accent:#244b70; --paper:#fff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#edf0f3; color:var(--ink); font:15px/1.48 Arial, Helvetica, sans-serif; }
+  .toolbar { max-width:900px; margin:22px auto 14px; padding:16px; background:white; border:1px solid var(--line); border-radius:12px; }
+  .toolbar h1 { margin:0 0 5px; font-size:20px; }
+  .toolbar p { margin:0 0 12px; color:var(--muted); }
+  .controls { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+  button, select { font:inherit; padding:9px 12px; border:1px solid #aeb8c2; border-radius:7px; background:#fff; color:var(--ink); }
+  button { cursor:pointer; }
+  button.primary { background:var(--accent); border-color:var(--accent); color:white; }
+  .hint { margin-top:10px; font-size:13px; color:var(--muted); }
+  #resume { max-width:850px; margin:0 auto 30px; padding:42px 48px; background:var(--paper); box-shadow:0 2px 12px #00000012; }
+  header { border-bottom:2px solid var(--accent); padding-bottom:13px; margin-bottom:18px; }
+  h1.name { font-size:28px; line-height:1.15; margin:0 0 4px; letter-spacing:.4px; }
+  .headline { font-size:13px; font-weight:bold; color:var(--accent); text-transform:uppercase; letter-spacing:.8px; }
+  .contact { color:var(--muted); font-size:12px; margin-top:8px; overflow-wrap:anywhere; }
+  section { margin-top:17px; }
+  h2 { font-size:13px; text-transform:uppercase; letter-spacing:1px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:5px; margin:0 0 9px; }
+  p { margin:4px 0; }
+  .job { margin:0 0 14px; break-inside:avoid; }
+  .jobhead { display:flex; flex-wrap:wrap; justify-content:space-between; gap:4px 14px; }
+  h3 { font-size:14px; margin:0; }
+  .dates { color:var(--muted); font-size:12px; }
+  .companyline { font-size:12px; color:var(--muted); margin:1px 0 5px; }
+  ul { margin:4px 0 0 18px; padding:0; }
+  li { margin:2px 0; }
+  .skills { font-size:12.5px; }
+  .tools { font-size:12.5px; }
+  .edu { display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px 12px; }
+  .small { font-size:12px; color:var(--muted); }
+  @media(max-width:650px) {
+    #resume { padding:28px 22px; margin:0 8px 20px; }
+    .toolbar { margin:10px; }
+  }
+  @media print {
+    @page { size:A4; margin:13mm; }
+    body { background:white; font-size:10pt; }
+    .toolbar { display:none !important; }
+    #resume { max-width:none; margin:0; padding:0; box-shadow:none; }
+    h1.name { font-size:23pt; }
+    section { margin-top:12px; }
+    .job { margin-bottom:10px; }
+    a { color:inherit; text-decoration:none; }
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <h1>Aswin's Resume Generator</h1>
+  <p>Choose a profile to preview a tailored resume. Then print or save it as a PDF.</p>
+  <div class="controls">
+    <label for="profile"><strong>Resume type:</strong></label>
+    <select id="profile">
+      <option value="recruiter">Technical / IT Recruiter</option>
+      <option value="ta">Talent Acquisition Specialist</option>
+      <option value="coord">Recruitment Coordinator / Recruiting Operations</option>
+      <option value="hr">HR Operations / HR Executive (transition profile)</option>
+      <option value="onboarding">Onboarding Coordinator</option>
+      <option value="people">People Operations Coordinator (transition profile)</option>
+      <option value="client">Client / MSP / Vendor Coordinator</option>
+      <option value="business">Business Operations / Reporting Coordinator</option>
+      <option value="workforce">Workforce / MIS Coordinator (transition profile)</option>
+      <option value="admin">Administrative / Executive Coordinator</option>
+      <option value="ld">L&amp;D / Training Coordinator (transition profile)</option>
+    </select>
+    <button class="primary" id="printBtn">Print / Save as PDF</button>
+  </div>
+  <div class="hint">Expanded generator with role-specific versions. Review each version against the vacancy and verify every bullet before applying. Supporting duties are described as assistance/exposure where appropriate. Power BI is listed as practice-project experience; no metrics are invented. No information is submitted anywhere.</div>
+</div>
+<main id="resume" aria-live="polite"></main>
+<script>
+const master = {
+  name: "ASWIN R",
+  location: "Bengaluru, India",
+  phone: "+91 7592881354",
+  email: "officialaswinr@gmail.com",
+  linkedin: "linkedin.com/in/aswinratheesh",
+  experience: [
+    {
+      company: "V2Soft",
+      role: "Technical Recruiter",
+      location: "Bengaluru, India",
+      dates: "Jul 2026 – Present",
+      bullets: [
+        "Support recruitment across IT, software, engineering, automotive and corporate functions, covering external-client requirements and internal vacancies.",
+        "Review hiring requirements and align sourcing with required skills, experience, location, communication needs and selection criteria.",
+        "Source active and passive candidates through LinkedIn Recruiter, JobDiva, Monster, Indeed, Dice, referrals, Boolean/X-Ray searches and targeted outreach.",
+        "Review resumes and conduct initial phone/video screens to assess background, role fit, communication, interest and availability.",
+        "Coordinate interviews, candidate preparation, follow-ups and recruitment updates with candidates and relevant hiring stakeholders.",
+        "Work with account managers, client handlers, sales teams and hiring stakeholders to clarify requirements and support recruitment priorities.",
+        "Maintain candidate profiles, notes, submissions, recruitment stages and pipeline activity in JobDiva.",
+        "Support offer discussions and negotiations, and track onboarding progress with the dedicated onboarding team.",
+        "Assist with recruitment reporting, EOD updates, pipeline tracking and KPI-related status reporting.",
+        "Assist with candidate and joining documentation, feedback follow-up, and coordination of pre-onboarding compliance steps.",
+        "Have formally trained colleagues and shared recruitment process knowledge.",
+        "Have exposure to requirements and workflows involving MSP/VMS clients and teams across multiple regions.",
+        "Have assisted with leave/attendance-related coordination; contractor timecard processes are observational exposure only."
+      ],
+      extra: "Internal hiring exposure includes technology, HR, finance, executive support, recruitment, sales, marketing and administration roles."
+    },
+    {
+      company: "Allegis Global Solutions",
+      role: "Recruiter",
+      location: "Bengaluru, India",
+      dates: "May 2025 – Jul 2026",
+      bullets: [
+        "Supported end-to-end recruitment for technical, software and non-technical positions across contract, contract-to-hire and permanent hiring models.",
+        "Sourced candidates through professional networks, job boards, referrals, targeted outreach and recruitment databases.",
+        "Reviewed resumes and conducted initial screening to assess experience, qualifications, communication, interest and role alignment.",
+        "Maintained candidate communication, explained role details, shared process updates and coordinated next steps.",
+        "Coordinated interview schedules and hiring workflows with recruiters and hiring managers, including follow-ups and status tracking.",
+        "Followed up on interview feedback and selection updates, maintaining communication between candidates and the recruitment team.",
+        "Maintained candidate records, pipeline stages and recruitment notes while managing multiple requirements in parallel.",
+        "Supported candidates during offer and pre-onboarding stages, helping move recruitment processes toward joining."
+      ]
+    }
+  ],
+  additional: [
+    {
+      role: "Full-Stack Development & Machine Learning Intern",
+      company: "Karunadu Technologies Private Limited",
+      dates: "May 2024",
+      bullets: [
+        "Developed applications using Python, Django and SQLite, including a Diabetes Prediction System and Student Management System.",
+        "Implemented application features and role-based access controls."
+      ]
+    },
+    {
+      role: "Full-Stack Development Intern",
+      company: "Orbitor",
+      dates: "Feb 2024 – Mar 2024",
+      bullets: [
+        "Developed web applications using Node.js, Express.js and MongoDB, including registration and blog platforms with User/Admin access levels."
+      ]
+    }
+  ],
+  education: "Bachelor of Computer Applications (BCA)",
+  college: "R R Institute of Management Studies",
+  educationDates: "2021 – 2024",
+  educationResult: "Distinction with First Class",
+  tools: "LinkedIn Recruiter · JobDiva · Monster · Indeed · Dice · Handshake · Boolean Search · X-Ray Search · Referrals · Microsoft Office · Google Workspace · Excel PivotTables · Power BI (practice projects)"
+};
+
+const profiles = {
+  recruiter: {
+    headline: "TECHNICAL RECRUITMENT | IT & SOFTWARE HIRING",
+    summary: "Recruitment professional with 1.5+ years of experience supporting technical, software and non-technical hiring across client-facing and internal recruitment environments. Experienced in requirement review, Boolean/X-Ray sourcing, resume screening, initial candidate discussions, submissions, interview coordination, pipeline tracking and offer-stage support. Familiar with global recruitment workflows and MSP/VMS client environments.",
+    skills: "Technical & IT Recruitment · Requirement Review · Boolean / X-Ray Search · Candidate Sourcing · Resume Screening · Initial Candidate Calls · Candidate Submissions · Interview Coordination · Job Boards & Talent Databases · JobDiva ATS · Pipeline Management · Offer-Stage Support · Candidate Follow-up · Client / Account Team Coordination",
+    v2: [0,1,2,3,4,5,6,7,8,9,10,11,12], allegis: [0,1,2,3,4,5,6,7], showTools: true
+  },
+  ta: {
+    headline: "TALENT ACQUISITION | END-TO-END RECRUITMENT",
+    summary: "Talent acquisition professional with 1.5+ years of experience supporting hiring from requirement review and candidate sourcing through screening, interview coordination, feedback follow-up, offer-stage support and onboarding progress tracking. Experienced in candidate engagement, recruitment status updates, job posting and coordinating with recruiters, account teams and hiring stakeholders across technical, professional and corporate roles.",
+    skills: "End-to-End Recruitment Support · Hiring Requirement Review · Talent Pipeline Development · Candidate Engagement · Resume Screening · Initial Phone / Video Discussions · Interview Scheduling · Hiring Stakeholder Coordination · Interview Feedback Follow-up · Offer Coordination · ATS & Candidate Records · Recruitment Reporting · Onboarding Progress Tracking · Candidate Experience",
+    v2: [0,1,2,3,4,5,6,7,8,9,10,11], allegis: [0,1,2,3,4,5,6,7], showTools: true
+  },
+  coord: {
+    headline: "RECRUITMENT COORDINATION | RECRUITING OPERATIONS",
+    summary: "Recruitment professional with experience coordinating candidate communication, interview scheduling, follow-ups, recruitment documentation, ATS updates and pipeline reporting. Comfortable supporting multiple hiring requirements, maintaining process visibility and coordinating with candidates, recruiters, account teams and hiring stakeholders. Interested in coordination-focused roles where candidate experience, organization and reliable follow-through are central.",
+    skills: "Interview Scheduling · Candidate Communication · Recruitment Coordination · ATS Data Maintenance · Pipeline Tracking · EOD Reporting · Hiring Follow-up · Documentation Coordination · Recruitment Prioritization · Stakeholder Communication · Candidate Experience · Microsoft Office · Google Workspace",
+    v2: [3,4,5,6,8,9,10], allegis: [3,4,5,6,7], showTools: true
+  },
+  hr: {
+    headline: "HR OPERATIONS SUPPORT | RECRUITMENT & HR COORDINATION",
+    summary: "Recruitment professional with 1.5+ years of experience and transferable skills relevant to HR operations support. Experienced in coordinating candidate and joining documentation, onboarding follow-ups, process communication, recruitment records and reporting, with assisted exposure to leave/attendance-related coordination and pre-onboarding compliance steps. Brings a BCA background, strong process follow-through and experience working with corporate hiring stakeholders.",
+    skills: "HR Coordination Support · Documentation Follow-up · Onboarding Coordination · Leave / Attendance Coordination Support · Compliance Process Coordination · Records Maintenance · Feedback Follow-up · Status Reporting · Stakeholder Communication · Confidential Information Handling · Microsoft Office · Google Workspace",
+    v2: [4,6,8,9,10,11,12], allegis: [4,5,6,7], showTools: false
+  },
+  onboarding: {
+    headline: "ONBOARDING COORDINATION | DOCUMENTATION & FOLLOW-THROUGH",
+    summary: "Recruitment professional experienced in supporting offer-stage activities and tracking candidate onboarding progress in coordination with a dedicated onboarding team. Has assisted with joining documentation, candidate communication, feedback follow-up and pre-onboarding compliance coordination. Focused on clear communication, organized records and timely follow-through across candidate transitions.",
+    skills: "Onboarding Progress Tracking · Joining Documentation Support · Candidate Communication · Offer-Stage Coordination · Compliance Coordination Support · Records & Status Updates · Follow-up Management · Stakeholder Coordination · Recruitment Systems · Process Tracking",
+    v2: [4,6,7,8,9,10], allegis: [4,5,6,7], showTools: true
+  },
+  people: {
+    headline: "PEOPLE OPERATIONS SUPPORT | HR COORDINATION",
+    summary: "People-focused recruitment professional bringing experience in candidate communication, documentation follow-up, process coordination and reporting, alongside assisted exposure to leave/attendance coordination and compliance steps. Interested in developing further into People Operations through a coordination-oriented role, while applying strong organization, confidentiality and stakeholder communication skills.",
+    skills: "People Operations Support · HR Coordination · Documentation Follow-up · Onboarding Support · Leave / Attendance Coordination Exposure · Compliance Coordination Support · Records & Reporting · Stakeholder Communication · Process Follow-through · Microsoft Office · Google Workspace",
+    v2: [4,6,8,9,10,11,12], allegis: [4,5,6,7], showTools: false
+  },
+  client: {
+    headline: "CLIENT OPERATIONS | MSP / VMS & RECRUITMENT COORDINATION",
+    summary: "Recruitment professional with exposure to global client-facing workflows, requirements routed through MSP/VMS environments, and coordination with account teams and hiring stakeholders. Experienced in requirement clarification, candidate submissions, status updates, feedback follow-up and pipeline records. Contractor timecard processes are observational exposure rather than direct ownership.",
+    skills: "Client / Account Team Coordination · MSP / VMS Workflow Exposure · Requirement Clarification · Candidate Submissions · Status & Feedback Follow-up · Recruitment Pipeline Tracking · Stakeholder Communication · Documentation Support · EOD Reporting · Excel PivotTables · Microsoft Office",
+    v2: [0,5,6,8,9,10,11,12], allegis: [0,3,4,5,6], showTools: true
+  },
+  business: {
+    headline: "BUSINESS OPERATIONS | REPORTING & COORDINATION",
+    summary: "Coordination-focused professional with recruitment operations experience, including EOD reporting, pipeline tracking, KPI-related status updates, documentation follow-up and cross-team communication. Comfortable using Excel PivotTables and has created Power BI practice projects. Brings an IT education and an interest in applying structured tracking, reporting and process coordination skills to business operations roles.",
+    skills: "Operations Coordination · EOD Reporting · Pipeline & Status Tracking · KPI-Related Reporting Support · Excel PivotTables · Power BI Practice Projects · Documentation Follow-up · Process Coordination · Stakeholder Communication · Microsoft Office · Google Workspace",
+    v2: [5,6,8,9,10,11], allegis: [4,5,6], showTools: true
+  },
+  workforce: {
+    headline: "WORKFORCE / MIS COORDINATION | TRANSFERABLE REPORTING SKILLS",
+    summary: "Recruitment professional experienced in tracking vacancies, candidate pipelines, recruitment activity and KPI-related status updates, with Excel PivotTable skills and Power BI practice-project exposure. Interested in transferring recruitment tracking and reporting strengths into workforce coordination or MIS support. Direct workforce scheduling, capacity planning and staffing-level ownership are not claimed.",
+    skills: "Recruitment Pipeline Tracking · KPI-Related Status Reporting · EOD Reports · Excel PivotTables · Power BI Practice Projects · Data Organization · Status Follow-up · Process Coordination · Stakeholder Communication · Microsoft Office",
+    v2: [5,6,8,9,10], allegis: [4,5,6], showTools: true
+  },
+  admin: {
+    headline: "ADMINISTRATIVE COORDINATION | DOCUMENTS & STAKEHOLDER SUPPORT",
+    summary: "Coordination-focused professional experienced in scheduling, follow-ups, maintaining digital records, supporting documentation and preparing routine status reports in recruitment environments. Has limited exposure to executive-support tasks and is interested in administrative coordination roles that value organization, confidentiality, communication and dependable process follow-through.",
+    skills: "Administrative Coordination Support · Scheduling & Follow-up · Documentation Support · Digital Records · Status Reporting · Stakeholder Communication · Confidential Information Handling · Microsoft Office · Google Workspace · Process Follow-through",
+    v2: [4,6,8,9,10], allegis: [4,5,6], showTools: false
+  },
+  ld: {
+    headline: "TRAINING COORDINATION | COLLEAGUE ENABLEMENT",
+    summary: "Recruitment professional with formal experience training colleagues and informal coaching exposure, alongside experience explaining recruitment processes, coordinating follow-ups and maintaining process information. Interested in training coordination and L&D support roles where communication, knowledge sharing and organized follow-through are important. Dedicated L&D program ownership is not claimed.",
+    skills: "Colleague Training · Informal Coaching · Process Explanation · Knowledge Sharing · Coordination & Follow-up · Documentation Support · Stakeholder Communication · Recruitment Process Knowledge · Microsoft Office · Google Workspace",
+    v2: [5,8,9,10], allegis: [3,4,5,6], showTools: false
+  }
+};
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, ch => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  }[ch]));
+}
+function renderJob(job, indices) {
+  const bullets = indices.map(i => job.bullets[i]).filter(Boolean);
+  return `<article class="job">
+    <div class="jobhead"><h3>${escapeHTML(job.role)}</h3><span class="dates">${escapeHTML(job.dates)}</span></div>
+    <div class="companyline">${escapeHTML(job.company)} · ${escapeHTML(job.location || "Remote")}</div>
+    <ul>${bullets.map(b => `<li>${escapeHTML(b)}</li>`).join("")}</ul>
+    ${job.extra ? `<p class="small">${escapeHTML(job.extra)}</p>` : ""}
+  </article>`;
+}
+function render() {
+  const key = document.getElementById("profile").value;
+  const p = profiles[key];
+  const contact = `${master.location} · ${master.phone} · ${master.email} · ${master.linkedin}`;
+  document.getElementById("resume").innerHTML = `
+    <header>
+      <h1 class="name">${escapeHTML(master.name)}</h1>
+      <div class="headline">${escapeHTML(p.headline)}</div>
+      <div class="contact">${escapeHTML(contact)}</div>
+    </header>
+    <section><h2>Professional Summary</h2><p>${escapeHTML(p.summary)}</p></section>
+    <section><h2>Core Skills</h2><p class="skills">${escapeHTML(p.skills)}</p></section>
+    ${p.showTools ? `<section><h2>Recruitment Tools</h2><p class="tools">${escapeHTML(master.tools)}</p></section>` : ""}
+    <section><h2>Professional Experience</h2>
+      ${renderJob(master.experience[0], p.v2)}
+      ${renderJob(master.experience[1], p.allegis)}
+    </section>
+    <section><h2>Additional Experience</h2>
+      ${master.additional.map(job => renderJob(job, job.bullets.map((_,i)=>i))).join("")}
+    </section>
+    <section><h2>Education</h2>
+      <div class="edu"><strong>${escapeHTML(master.education)}</strong><span class="dates">${escapeHTML(master.educationDates)}</span></div>
+      <p>${escapeHTML(master.college)} · ${escapeHTML(master.educationResult)}</p>
+    </section>`;
+}
+document.getElementById("profile").addEventListener("change", render);
+document.getElementById("printBtn").addEventListener("click", () => window.print());
+render();
+</script>
+</body>
+</html>
